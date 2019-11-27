@@ -8,5 +8,9 @@
   <div *ngFor="let film of human?.appearsIn">
     <p> - {{film}}</p>
   </div>
+  <p><strong>Friends</strong></p>
+  <div *ngFor="let friend of human?.friends">
+    <p> - {{friend.name}}</p>
+  </div>
 </div>
 

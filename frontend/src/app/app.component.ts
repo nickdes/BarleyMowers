@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   runQuery() {
-    const getRecord =  gql('{ human (id: "$id") { id name appearsIn } }'.replace('$id', this.id));
+    const getRecord =  gql('{ human (id: "$id") { id name appearsIn friends { name appearsIn }} }'.replace('$id', this.id));
     this.apollo
       .watchQuery({
         query: getRecord
