@@ -1,4 +1,5 @@
 using GraphQL.Types;
+using System.Collections.Generic;
 
 namespace StarWars.Types
 {
@@ -22,6 +23,21 @@ namespace StarWars.Types
             Field(h => h.Age, nullable: true).Description("The age of the human.");
 
             Interface<CharacterInterface>();
+        }
+    }
+
+    public class HumanList : ObjectGraphType<List<Human>>
+    {
+        public HumanList(StarWarsData data)
+        {
+            Name = "HumanList";
+
+            Field<ListGraphType<CharacterInterface>>(
+                "humans",
+                resolve: context => data.GetAll()
+            );
+
+            // Interface<CharacterInterface>();
         }
     }
 }

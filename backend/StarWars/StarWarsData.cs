@@ -68,6 +68,11 @@ namespace StarWars
             return friends;
         }
 
+        public IEnumerable<Human> GetAll()
+        {
+            return _humans.ToList();
+        }
+
         public Task<Human> GetHumanByIdAsync(string id)
         {
             return Task.FromResult(_humans.FirstOrDefault(h => h.Id == id));
