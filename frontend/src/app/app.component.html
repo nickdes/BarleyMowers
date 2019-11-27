@@ -15,10 +15,12 @@
     <div *ngFor="let item of characters">
       <ng-container *ngIf="!searchTerm || (searchTerm && item && item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase()))" >
         <div class="card">
-          <p>Type: {{selectCharacter}}</p>
-          <p>Id : {{ item.id }}</p>
-          <p>Name : {{ item.name }}</p>
-          <p>Age : {{ item.age }}</p>
+          <p>Type: <strong>{{selectCharacter}}</strong></p>
+          <p>Id : <strong>{{ item.id }}</strong></p>
+          <p>Name : <strong>{{ item.name }}</strong></p>
+          <p>Age : <strong>{{ item.age }}</strong></p>
+          <p>AppearsIn:<ng-container *ngFor="let episode of item.appearsIn"><p><strong>- {{episode}}</strong></p></ng-container></p>
+          <p><strong>Friends:</strong><ng-container *ngFor="let friend of item.friends"><p><strong>- {{friend.name}}</strong></p></ng-container></p>
         </div>
       </ng-container>
     </div>
