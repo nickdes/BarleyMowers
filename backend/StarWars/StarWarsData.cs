@@ -89,5 +89,12 @@ namespace StarWars
             _humans.Add(human);
             return human;
         }
+
+        public Droid AddDroid(Droid droid)
+        {
+            droid.Id = Guid.NewGuid().ToString();
+            _droids.Add(droid);
+            return droid;
+        }
     }
 }
