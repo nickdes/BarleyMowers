@@ -13,6 +13,8 @@ namespace StarWars.Types
 
             Field<ListGraphType<CharacterInterface>>("friends");
             Field<ListGraphType<EpisodeEnum>>("appearsIn", "Which movie they appear in.");
+
+            Field(d => d.Age).Description("The age of the character.");
         }
     }
 }
