@@ -19,6 +19,8 @@ namespace StarWars.Types
 
             Field(h => h.HomePlanet, nullable: true).Description("The home planet of the human.");
 
+            Field(h => h.Age, nullable: true).Description("The age of the human.");
+
             Interface<CharacterInterface>();
         }
     }

@@ -19,6 +19,8 @@ namespace StarWars.Types
             Field<ListGraphType<EpisodeEnum>>("appearsIn", "Which movie they appear in.");
             Field(d => d.PrimaryFunction, nullable: true).Description("The primary function of the droid.");
 
+            Field(d => d.Age).Description("The age of the droid.");
+
             Interface<CharacterInterface>();
         }
     }
