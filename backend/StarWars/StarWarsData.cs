@@ -90,6 +90,40 @@ namespace StarWars
             return human;
         }
 
+        public Human EditHuman(Human human)
+        {
+          var humanToEdit=  _humans.SingleOrDefault(x => x.Id == human.Id);
+          if (!string.IsNullOrWhiteSpace(human.HomePlanet))
+          {
+              humanToEdit.HomePlanet = human.HomePlanet;
+          }
+
+          if (!string.IsNullOrWhiteSpace(human.Name))
+          {
+              humanToEdit.Name = human.Name;
+          }
+
+          return humanToEdit;
+
+          // _humans.Remove()
+        }
+
+        public Droid EditDroid(Droid droid)
+        {
+            var droidToEdit = _droids.SingleOrDefault(x => x.Id == droid.Id);
+            if (!string.IsNullOrWhiteSpace(droid.PrimaryFunction))
+            {
+                droidToEdit.PrimaryFunction = droid.PrimaryFunction;
+            }
+
+            if (!string.IsNullOrWhiteSpace(droid.Name))
+            {
+                droidToEdit.Name = droid.Name;
+            }
+
+            return droidToEdit;
+        }
+
         public Droid AddDroid(Droid droid)
         {
             droid.Id = Guid.NewGuid().ToString();

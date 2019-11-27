@@ -59,10 +59,24 @@ namespace StarWars
                 {
 
                     var humanToHandle = context.GetArgument<Human>("human");
-                    throw new NotImplementedException();
+                    return data.EditHuman(humanToHandle);
+                });
+
+            Field<DroidType>(
+                "editDroid",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<DroidInputType>> { Name = "droid" }
+
+                ),
+                resolve: context =>
+                {
+
+                    var droidToHandle = context.GetArgument<Droid>("droid");
+                    return data.EditDroid(droidToHandle);
                     // context.
                     //    return data.AddHuman(human);
                 });
+
         }
     }
 }
