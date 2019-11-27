@@ -1,4 +1,5 @@
 using GraphQL.Types;
+using System.Collections.Generic;
 
 namespace StarWars.Types
 {
@@ -22,6 +23,21 @@ namespace StarWars.Types
             Field(d => d.Age).Description("The age of the droid.");
 
             Interface<CharacterInterface>();
+        }
+    }
+
+    public class DroidList : ObjectGraphType<List<Droid>>
+    {
+        public DroidList(StarWarsData data)
+        {
+            Name = "DroidList";
+
+            Field<ListGraphType<CharacterInterface>>(
+                "droids",
+                resolve: context => data.GetAllDroids()
+            );
+
+            // Interface<CharacterInterface>();
         }
     }
 }

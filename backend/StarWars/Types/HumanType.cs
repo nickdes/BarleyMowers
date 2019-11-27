@@ -34,7 +34,7 @@ namespace StarWars.Types
 
             Field<ListGraphType<CharacterInterface>>(
                 "humans",
-                resolve: context => data.GetAll()
+                resolve: context => data.GetAllHumans()
             );
 
             // Interface<CharacterInterface>();

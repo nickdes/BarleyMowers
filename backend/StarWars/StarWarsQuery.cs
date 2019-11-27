@@ -19,10 +19,10 @@ namespace StarWars
                 resolve: context => data.GetHumanByIdAsync(context.GetArgument<string>("id"))
             );
 
-            Field<HumanList>("allHuman",
-               resolve: context => data.GetAll()
-           );
-
+            Field<HumanList>("allhumans",
+               resolve: context => data.GetAllHumans()
+            );
+            
             Func<ResolveFieldContext, string, object> func = (context, id) => data.GetDroidByIdAsync(id);
 
             FieldDelegate<DroidType>(
@@ -32,6 +32,11 @@ namespace StarWars
                 ),
                 resolve: func
             );
+
+            Field<DroidList>("alldroids",
+               resolve: context => data.GetAllDroids()
+            );
+
         }
     }
 }
