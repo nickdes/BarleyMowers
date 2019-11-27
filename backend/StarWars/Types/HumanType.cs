@@ -2,6 +2,15 @@ using GraphQL.Types;
 
 namespace StarWars.Types
 {
+
+    public class CharacterType<T> : ObjectGraphType where T:StarWarsCharacter
+    {
+        public CharacterType(StarWarsData data)
+        {
+
+        }
+    }
+
     public class HumanType : ObjectGraphType<Human>
     {
         public HumanType(StarWarsData data)

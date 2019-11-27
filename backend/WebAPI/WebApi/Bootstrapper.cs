@@ -3,6 +3,7 @@ using GraphQL.Http;
 using GraphQL.Types;
 using IoC;
 using StarWars;
+using StarWars.Mutations;
 using StarWars.Types;
 
 namespace WebApi
@@ -25,6 +26,7 @@ namespace WebApi
             container.Singleton(new StarWarsData());
             container.Register<StarWarsQuery>();
             container.Register<StarWarsMutation>();
+            container.Register<EditCharacterMutation>();
             container.Register<HumanType>();
             container.Register<HumanInputType>();
             container.Register<DroidType>();

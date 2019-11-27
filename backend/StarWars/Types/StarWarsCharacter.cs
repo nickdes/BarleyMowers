@@ -8,6 +8,8 @@ namespace StarWars.Types
         public int[] AppearsIn { get; set; }
     }
 
+    
+
     public class Human : StarWarsCharacter
     {
         public string HomePlanet { get; set; }

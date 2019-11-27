@@ -11,6 +11,7 @@ namespace StarWars
         {
             Query = provider.GetRequiredService<StarWarsQuery>();
             Mutation = provider.GetRequiredService<StarWarsMutation>();
+          //  Mutation
         }
     }
 }

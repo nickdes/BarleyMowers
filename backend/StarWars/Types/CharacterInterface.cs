@@ -15,4 +15,6 @@ namespace StarWars.Types
             Field<ListGraphType<EpisodeEnum>>("appearsIn", "Which movie they appear in.");
         }
     }
+
+
 }
