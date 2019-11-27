@@ -30,6 +30,17 @@ namespace StarWars
                     var human = context.GetArgument<Human>("human");
                     return data.AddHuman(human);
                 });
+
+            Field<HumanType>(
+                "createDroid",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<HumanInputType>> { Name = "droid" }
+                ),
+                resolve: context =>
+                {
+                    var droid = context.GetArgument<Droid>("droid");
+                    return data.AddDroid(droid);
+                });
         }
     }
 }
