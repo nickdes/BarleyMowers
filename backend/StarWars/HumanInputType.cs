@@ -11,6 +11,7 @@ namespace StarWars
             
             Field(x => x.HomePlanet, nullable: true);
             
+            Field(x => x.Age, nullable: true);
         }
 
 
