@@ -10,7 +10,7 @@ namespace StarWars
             Name = "HumanInput";
             
             Field(x => x.HomePlanet, nullable: true);
-            Field(x => x.Id, nullable: false);
+            
         }
 
 
@@ -23,7 +23,8 @@ namespace StarWars
         public CharacterInputType()
         {
             Name = "CharacterInput";
-            Field(x => x.Name);
+            Field(x => x.Name, nullable:true);
+            Field(x => x.Id, nullable: false);
         }
     }
 
@@ -31,7 +32,8 @@ namespace StarWars
     {
         public DroidInputType():base()
         {
-            Field(x => x.PrimaryFunction);
+            Name = "DroidInput";
+            Field(x => x.PrimaryFunction, nullable: true);
         }
     }
 }

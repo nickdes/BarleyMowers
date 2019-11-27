@@ -98,7 +98,13 @@ namespace StarWars
         public Human EditHuman(Human human)
         {
           var humanToEdit=  _humans.SingleOrDefault(x => x.Id == human.Id);
-          if (!string.IsNullOrWhiteSpace(human.HomePlanet))
+          if (humanToEdit == null)
+          {
+              return null;
+          }
+
+
+            if (!string.IsNullOrWhiteSpace(human.HomePlanet))
           {
               humanToEdit.HomePlanet = human.HomePlanet;
           }
@@ -116,6 +122,11 @@ namespace StarWars
         public Droid EditDroid(Droid droid)
         {
             var droidToEdit = _droids.SingleOrDefault(x => x.Id == droid.Id);
+            if (droidToEdit == null)
+            {
+                return null;
+            }
+
             if (!string.IsNullOrWhiteSpace(droid.PrimaryFunction))
             {
                 droidToEdit.PrimaryFunction = droid.PrimaryFunction;
