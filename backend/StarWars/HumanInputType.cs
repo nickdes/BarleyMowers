@@ -10,6 +10,7 @@ namespace StarWars
             Name = "HumanInput";
             
             Field(x => x.HomePlanet, nullable: true);
+            Field(x => x.Age, nullable: true);
             Field(x => x.Id, nullable: false);
         }
 
