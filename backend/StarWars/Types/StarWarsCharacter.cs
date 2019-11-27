@@ -6,6 +6,7 @@ namespace StarWars.Types
         public string Name { get; set; }
         public string[] Friends { get; set; }
         public int[] AppearsIn { get; set; }
+        public int Age { get; set; }
     }
 
     

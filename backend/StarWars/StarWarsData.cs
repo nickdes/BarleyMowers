@@ -20,14 +20,16 @@ namespace StarWars
                 Name = "Luke",
                 Friends = new[] { "3", "4" },
                 AppearsIn = new[] { 4, 5, 6 },
-                HomePlanet = "Tatooine"
+                HomePlanet = "Tatooine",
+                Age = 15
             });
             _humans.Add(new Human
             {
                 Id = "2",
                 Name = "Vader",
                 AppearsIn = new[] { 4, 5, 6 },
-                HomePlanet = "Tatooine"
+                HomePlanet = "Tatooine",
+                Age = 16
             });
 
             _droids.Add(new Droid
@@ -36,14 +38,16 @@ namespace StarWars
                 Name = "R2-D2",
                 Friends = new[] { "1", "4" },
                 AppearsIn = new[] { 4, 5, 6 },
-                PrimaryFunction = "Astromech"
+                PrimaryFunction = "Astromech",
+                Age = 17
             });
             _droids.Add(new Droid
             {
                 Id = "4",
                 Name = "C-3PO",
                 AppearsIn = new[] { 4, 5, 6 },
-                PrimaryFunction = "Protocol"
+                PrimaryFunction = "Protocol",
+                Age = 18
             });
         }
 
@@ -64,6 +68,11 @@ namespace StarWars
             return friends;
         }
 
+        public IEnumerable<Human> GetAll()
+        {
+            return _humans.ToList();
+        }
+
         public Task<Human> GetHumanByIdAsync(string id)
         {
             return Task.FromResult(_humans.FirstOrDefault(h => h.Id == id));
@@ -79,6 +88,13 @@ namespace StarWars
             human.Id = Guid.NewGuid().ToString();
             _humans.Add(human);
             return human;
+        }
+
+        public Droid AddDroid(Droid droid)
+        {
+            droid.Id = Guid.NewGuid().ToString();
+            _droids.Add(droid);
+            return droid;
         }
     }
 }

@@ -9,6 +9,7 @@ import gql from 'graphql-tag';
 })
 export class AppComponent implements OnInit {
   human: any;
+  friends: any;
   loading = true;
   id: string;
 
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   runQuery() {
-    const getRecord =  gql('{ human (id: "$id") { id name appearsIn } }'.replace('$id', this.id));
+    const getRecord =  gql('{ human (id: "$id") { id name age appearsIn friends { name appearsIn }} }'.replace('$id', this.id));
     this.apollo
       .watchQuery({
         query: getRecord
