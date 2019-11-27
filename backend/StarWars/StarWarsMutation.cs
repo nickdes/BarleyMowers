@@ -34,7 +34,7 @@ namespace StarWars
             Field<HumanType>(
                 "createDroid",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<HumanInputType>> { Name = "droid" }
+                    new QueryArgument<NonNullGraphType<DroidInputType>> { Name = "droid" }
                 ),
                 resolve: context =>
                 {
