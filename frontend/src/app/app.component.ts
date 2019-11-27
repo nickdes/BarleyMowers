@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,7 @@ export class AppComponent implements OnInit {
   characters: any;
   searchTerm: string;
   editId: string;
-  editObject: any;
-
+  
   constructor(private apollo: Apollo) {
     this.id = '1';
   }
@@ -30,6 +30,8 @@ export class AppComponent implements OnInit {
       this.selectCharacter = 'human';
     }
 
+    this.editId = null;
+
     const query = `{ all${this.selectCharacter}s { ${this.selectCharacter}s { id name age appearsIn friends { name appearsIn } } } }`;
 
     const getRecord =  gql(query);
@@ -41,5 +43,41 @@ export class AppComponent implements OnInit {
         this.characters = result.data && result.data[`all${this.selectCharacter}s`][`${this.selectCharacter}s`];
         this.loading = result.loading;
       });
+  }
+
+  save(item){
+
+    let mutationQuery = null;
+    let data = null;
+
+    if (this.selectCharacter == 'human') {
+      mutationQuery = gql('mutation ($human:HumanInput!) { editHuman(human: $human) { id, name } }');
+      data = {
+        human: {
+          id: item.id,
+          name: item.name
+        }
+      };
+    } else {
+      mutationQuery = gql('mutation ($droid:DroidInput!) { editDroid(droid: $droid) { id, name } }');
+      data = {
+        droid: {
+          id: item.id,
+          name: item.name
+        }
+      };
+    }
+
+    this.apollo.mutate({
+      mutation: mutationQuery,
+      variables: data
+    }).subscribe(({ data }) => {
+      debugger;
+      console.log('got data', data);
+    },(error) => {
+      debugger;
+      console.log('there was an error sending the query', error);
+    });
+    console.log(item);
   }
 }
