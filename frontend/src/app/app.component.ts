@@ -8,10 +8,12 @@ import gql from 'graphql-tag';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  human: any;
   friends: any;
   loading = true;
   id: string;
+  selectCharacter: 'human';
+  characters: any;
+  searchTerm: string;
 
   constructor(private apollo: Apollo) {
     this.id = '1';
@@ -22,13 +24,19 @@ export class AppComponent implements OnInit {
   }
 
   runQuery() {
-    const getRecord =  gql('{ human (id: "$id") { id name age appearsIn friends { name appearsIn }} }'.replace('$id', this.id));
+    if (!this.selectCharacter) {
+      this.selectCharacter = 'human';
+    }
+
+    const query = `{ all${this.selectCharacter}s { ${this.selectCharacter}s { id name age appearsIn friends { name appearsIn } } } }`;
+
+    const getRecord =  gql(query);
     this.apollo
       .watchQuery({
         query: getRecord
       })
       .valueChanges.subscribe(result => {
-        this.human = result.data && result.data['human'];
+        this.characters = result.data && result.data[`all${this.selectCharacter}s`][`${this.selectCharacter}s`];
         this.loading = result.loading;
       });
   }
