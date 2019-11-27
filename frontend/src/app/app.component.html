@@ -1,0 +1,12 @@
+<div *ngIf="loading">
+  Loading...
+</div>
+<div *ngIf="human">
+  <p>Human Id: <strong>{{human?.id}}</strong></p>
+  <p>Human Name: <strong>{{human?.name}}</strong></p>
+  <p><strong>Appears In</strong></p>
+  <div *ngFor="let film of human?.appearsIn">
+    <p> - {{film}}</p>
+  </div>
+</div>
+
