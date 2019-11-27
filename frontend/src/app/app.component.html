@@ -16,11 +16,13 @@
       <ng-container *ngIf="!searchTerm || (searchTerm && item && item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase()))" >
         <div class="card">
           <p>TYPE: <strong>{{selectCharacter}}</strong></p>
-          <p>ID : <strong>{{ item.id }}</strong></p>
-          <p>NAME : <strong>{{ item.name }}</strong></p>
-          <p>AGE : <strong>{{ item.age }}</strong></p>
+          <p>ID : <strong *ngIf="!editId || (editId && editId!=item.id)">{{ item.id }}</strong><input *ngIf="editId==item.id" [(ngModel)]="item.id" type="text"></p>
+          <p>NAME : <strong *ngIf="!editId || (editId && editId!=item.id)">{{ item.name }}</strong><input *ngIf="editId==item.id" [(ngModel)]="item.name" type="text"></p>
+          <p>AGE : <strong *ngIf="!editId || (editId && editId!=item.id)">{{ item.age }}</strong><input *ngIf="editId==item.id" [(ngModel)]="item.age" type="text"></p>
           <p>APPEARS IN<ng-container *ngFor="let episode of item.appearsIn"><p><strong>- {{episode}}</strong></p></ng-container></p>
           <p>FRIENDS:<ng-container *ngFor="let friend of item.friends"><p><strong>- {{friend.name}}</strong></p></ng-container></p>
+          <button *ngIf="editId==item.id" class="button" (click)="editId = null">Save</button>
+          <button *ngIf="!editId || (editId && editId!=item.id)" class="button" (click)="editId = item.id">Edit</button>
         </div>
       </ng-container>
     </div>

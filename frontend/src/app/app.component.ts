@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   selectCharacter: 'human';
   characters: any;
   searchTerm: string;
+  editId: string;
+  editObject: any;
 
   constructor(private apollo: Apollo) {
     this.id = '1';
