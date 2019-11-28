@@ -78,7 +78,7 @@ namespace StarWars
                 });
 
 
-            Field<HumanType>(
+            Field<DroidType>(
                 "createDroid",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<DroidInputType>> { Name = "droid" }
